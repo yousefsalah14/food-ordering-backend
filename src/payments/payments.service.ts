@@ -76,7 +76,7 @@ export class PaymentsService {
       order,
       method: PaymentMethod.CARD,
       amount: Number(order.total),
-      currency: this.configService.get<string>('payments.currency', 'usd'),
+      currency: this.configService.get<string>('payments.currency', 'egp'),
       status: PaymentStatus.PENDING,
     });
 
@@ -189,7 +189,7 @@ export class PaymentsService {
       order,
       method: order.paymentMethod,
       amount: Number(order.total),
-      currency: this.configService.get<string>('payments.currency', 'usd'),
+      currency: this.configService.get<string>('payments.currency', 'egp'),
       status: PaymentStatus.PENDING,
     });
 

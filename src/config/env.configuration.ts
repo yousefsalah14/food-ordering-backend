@@ -30,6 +30,6 @@ export default () => ({
       process.env.STRIPE_SUCCESS_URL ?? 'http://localhost:3000/payment/success',
     stripeCancelUrl:
       process.env.STRIPE_CANCEL_URL ?? 'http://localhost:3000/payment/cancel',
-    currency: process.env.STRIPE_CURRENCY ?? 'usd',
+    currency: process.env.STRIPE_CURRENCY ?? 'egp',
   },
 });

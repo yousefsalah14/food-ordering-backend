@@ -69,7 +69,7 @@ export class OrdersService {
         order: savedOrder,
         method: savedOrder.paymentMethod,
         amount: Number(savedOrder.total),
-        currency: this.configService.get<string>('payments.currency', 'usd'),
+        currency: this.configService.get<string>('payments.currency', 'egp'),
       });
       await this.paymentsRepository.save(payment);
     }

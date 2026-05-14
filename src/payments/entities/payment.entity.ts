@@ -31,8 +31,8 @@ export class Payment extends BaseAppEntity {
   @Column({ type: 'varchar', nullable: true })
   paymentIntentId?: string | null;
 
-  @ApiProperty({ example: 'usd' })
-  @Column({ default: 'usd' })
+  @ApiProperty({ example: 'egp' })
+  @Column({ default: 'egp' })
   currency!: string;
 
   @OneToOne(() => Order, (order) => order.payment, {

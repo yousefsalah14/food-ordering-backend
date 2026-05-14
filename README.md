@@ -95,7 +95,7 @@ STRIPE_PUBLISHABLE_KEY=
 STRIPE_WEBHOOK_SECRET=
 STRIPE_SUCCESS_URL=http://localhost:3000/payment/success
 STRIPE_CANCEL_URL=http://localhost:3000/payment/cancel
-STRIPE_CURRENCY=usd
+STRIPE_CURRENCY=egp
 ```
 
 ## Getting Started
@@ -127,4 +127,3 @@ npm run seed
 - Role-based access is enforced in the orders and admin modules
 - Seed data is intended for local development and review only
 - The backend and frontend are designed to run together with the frontend targeting the API base URL above
-
