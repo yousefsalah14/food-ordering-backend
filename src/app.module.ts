@@ -1,4 +1,4 @@
-import { Module } from '@nestjs/common';
+import { Logger, Module, OnModuleInit } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import configuration from './config/env.configuration';
@@ -15,6 +15,7 @@ import { PaymentsModule } from './payments/payments.module';
 import { UploadsModule } from './uploads/uploads.module';
 import { AdminModule } from './admin/admin.module';
 import { validateEnv } from './config/env.validation';
+import { DataSource } from 'typeorm';
 
 // Interceptors disabled for now:
 // import { LocalizationInterceptor } from './common/interceptors/localization.interceptor';
@@ -57,4 +58,14 @@ import { validateEnv } from './config/env.validation';
     // },
   ],
 })
-export class AppModule {}
+export class AppModule implements OnModuleInit {
+  private readonly logger = new Logger(AppModule.name);
+
+  constructor(private dataSource: DataSource) {}
+
+  onModuleInit() {
+    if (this.dataSource.isInitialized) {
+      this.logger.log('Database connected successfully');
+    }
+  }
+}

@@ -15,6 +15,7 @@ export default () => ({
     frontendUrl: process.env.FRONTEND_URL ?? 'http://localhost:5173',
   },
   database: {
+    url: process.env.DATABASE_URL,
     host: process.env.DB_HOST ?? 'localhost',
     port: parseNumber(process.env.DB_PORT, 3306),
     username: process.env.DB_USERNAME ?? 'root',
