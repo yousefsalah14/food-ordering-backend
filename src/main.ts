@@ -15,15 +15,11 @@ async function bootstrap() {
   const apiPrefix = configService.get<string>('app.apiPrefix', 'api');
   const swaggerPath = configService.get<string>('app.swaggerPath', 'docs');
   const port = configService.get<number>('app.port', 3000);
-  const frontendUrl = configService.get<string>(
-    'app.frontendUrl',
-    'http://localhost:5173',
-  );
   const uploadsPath = join(process.cwd(), 'uploads');
 
   app.setGlobalPrefix(apiPrefix);
   app.enableCors({
-    origin: [frontendUrl, 'http://127.0.0.1:5173'],
+    origin: true,
     credentials: true,
     methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization'],
@@ -70,10 +66,10 @@ async function bootstrap() {
     },
   });
 
-  await app.listen(port);
-  console.log(`API is running on http://localhost:${port}/${apiPrefix}`);
+  await app.listen(port, '0.0.0.0');
+  console.log(`API is running on http://0.0.0.0:${port}/${apiPrefix}`);
   console.log(
-    `Swagger docs are available at http://localhost:${port}/${swaggerPath}`,
+    `Swagger docs are available at http://0.0.0.0:${port}/${swaggerPath}`,
   );
 }
 
